@@ -5,8 +5,12 @@ export default {
       bold: 'Poppins-Bold',
       italic: 'Poppins-Italic',
       medium: 'Poppins-Medium',
+      extralightItalic: 'Poppins-ExtraLightItalic',
     },
     sizes: {
+      xxHuge: '50px',
+      xHuge: '40px',
+      huge: '32px',
       xxxLarge: '24px',
       xLarge: '22px',
       large: '21px',
@@ -49,6 +53,7 @@ export default {
 
   spacings: {
     none: '0px',
+    xxxxSmall: '2px',
     xxxSmall: '5px',
     xxSmall: '10px',
     xSmall: '15px',
