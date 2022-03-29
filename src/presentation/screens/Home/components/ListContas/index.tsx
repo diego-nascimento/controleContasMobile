@@ -1,14 +1,12 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {contaModel} from '../../../../../models/conta';
+
 import {Conta} from '../Conta';
 import * as SC from './style';
+import {useHome} from '../../hooks';
 
-interface ListContas {
-  contas: contaModel[];
-}
-
-export const ListContas: React.FC<ListContas> = ({contas}) => {
+export const ListContas: React.FC = () => {
+  const {contas} = useHome();
   return (
     <SC.Container>
       <FlatList

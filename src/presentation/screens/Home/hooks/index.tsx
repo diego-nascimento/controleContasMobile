@@ -1,11 +1,28 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {ReactNode, useCallback, useEffect} from 'react';
 import {contaModel} from '../../../../models/conta';
 import {contasInitialState} from './helpers/contasInitialState';
 import {getContasData} from './helpers/getContasData';
 import startOfMonth from 'date-fns/startOfMonth';
 import endOfMonth from 'date-fns/endOfMonth';
 
-export const useHomeHooks = () => {
+interface createContextTypes {
+  error: string | null;
+  loading: boolean;
+  total: number;
+  setAfterSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
+  afterSelectedDate: Date;
+  contas: contaModel[];
+  setBeforeSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
+  beforeSelectedDate: Date;
+}
+
+export const HomeContext = React.createContext({} as createContextTypes);
+
+type HomeProviderProps = {
+  children: ReactNode;
+};
+
+const HomeProvider: React.FC<HomeProviderProps> = ({children}) => {
   const [contas, setContas] = React.useState<contaModel[]>([]);
   const [total, setTotal] = React.useState<number>(0);
   const [error, setError] = React.useState<string | null>(null);
@@ -40,14 +57,29 @@ export const useHomeHooks = () => {
     });
   }, [contas]);
 
-  return {
-    error,
-    loading,
-    total,
-    setAfterSelectedDate,
-    afterSelectedDate,
-    contas,
-    setBeforeSelectedDate,
-    beforeSelectedDate,
-  };
+  return (
+    <HomeContext.Provider
+      value={{
+        error,
+        loading,
+        total,
+        setAfterSelectedDate,
+        afterSelectedDate,
+        contas,
+        setBeforeSelectedDate,
+        beforeSelectedDate,
+      }}>
+      {children}
+    </HomeContext.Provider>
+  );
 };
+
+function useHome() {
+  const context = React.useContext(HomeContext);
+  if (context === undefined) {
+    throw new Error('useCart must be used within a HomeProvider');
+  }
+  return context;
+}
+
+export {HomeProvider, useHome};

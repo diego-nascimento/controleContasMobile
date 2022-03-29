@@ -6,23 +6,18 @@ import {HeaderTopTotal} from '../Header';
 import {TimePickers} from '../TimePickers';
 import {FooterTopTotal} from '../Footer';
 import {predefinedParams} from '../../helpers/index';
-interface TotalTopParams {
-  total: number;
-  setafterSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
-  afterSelectedDate: Date;
-  setBeforeSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
-  beforeSelectedDate: Date;
-}
+import {useHome} from '../../hooks/index';
 
-export const TotalTop: React.FC<TotalTopParams> = ({
-  total,
-  setafterSelectedDate,
-  afterSelectedDate,
-  beforeSelectedDate,
-  setBeforeSelectedDate,
-}) => {
+export const TotalTop: React.FC = () => {
   const [showAfter, setShowAfter] = React.useState<boolean>(false);
   const [showBefore, setShowBefore] = React.useState<boolean>(false);
+  const {
+    afterSelectedDate,
+    beforeSelectedDate,
+    setAfterSelectedDate,
+    setBeforeSelectedDate,
+    total,
+  } = useHome();
 
   return (
     <SC.TotalContainer>
@@ -43,7 +38,7 @@ export const TotalTop: React.FC<TotalTopParams> = ({
         params={[
           {
             selectedDate: afterSelectedDate,
-            setSelectedDate: setafterSelectedDate,
+            setSelectedDate: setAfterSelectedDate,
             show: showAfter,
             setShow: setShowAfter,
           },
@@ -67,7 +62,7 @@ export const TotalTop: React.FC<TotalTopParams> = ({
       />
       <FooterTopTotal
         setBeforeSelectedDate={setBeforeSelectedDate}
-        setafterSelectedDate={setafterSelectedDate}
+        setafterSelectedDate={setAfterSelectedDate}
         params={predefinedParams}
       />
     </SC.TotalContainer>
