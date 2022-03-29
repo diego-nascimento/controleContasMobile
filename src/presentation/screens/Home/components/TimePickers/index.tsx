@@ -1,5 +1,5 @@
 import React from 'react';
-import {TimePicker} from '../TimePicker';
+import {TimePicker} from '../../../../components/TimePicker';
 
 type ParamsTypes = {
   selectedDate: Date;

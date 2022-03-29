@@ -7,14 +7,19 @@ type httpClientParams = {
   baseURL: string;
 };
 
-export async function httpClient({
+type httpClientResponseTypes<t> = {
+  statusCode: number;
+  data: t;
+};
+
+export async function httpClient<t>({
   method = 'GET',
   baseURL,
   data,
   endPoint,
-}: httpClientParams): Promise<any> {
+}: httpClientParams): Promise<httpClientResponseTypes<t>> {
   try {
-    const response: AxiosResponse = await axios.request({
+    const response: AxiosResponse<any, t> = await axios.request({
       method,
       baseURL,
       data,
@@ -28,7 +33,7 @@ export async function httpClient({
   } catch (error) {
     return {
       statusCode: 500,
-      data: error,
+      data: error.message,
     };
   }
 }

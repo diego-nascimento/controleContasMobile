@@ -1,6 +1,6 @@
 import React, {ReactNode, useCallback, useEffect} from 'react';
 import {contaModel} from '../../../../models/conta';
-import {contasInitialState} from './helpers/contasInitialState';
+
 import {getContasData} from './helpers/getContasData';
 import startOfMonth from 'date-fns/startOfMonth';
 import endOfMonth from 'date-fns/endOfMonth';
@@ -37,6 +37,7 @@ const HomeProvider: React.FC<HomeProviderProps> = ({children}) => {
   const handleContas = useCallback(async () => {
     getContasData({
       setContas,
+      setTotal,
       setError,
       setLoading,
       data: {
@@ -49,13 +50,6 @@ const HomeProvider: React.FC<HomeProviderProps> = ({children}) => {
   useEffect(() => {
     handleContas();
   }, [handleContas]);
-
-  useEffect(() => {
-    contasInitialState({
-      contas,
-      setTotal,
-    });
-  }, [contas]);
 
   return (
     <HomeContext.Provider
