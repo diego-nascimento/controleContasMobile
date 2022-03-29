@@ -7,18 +7,22 @@ interface getDataParams {
   setError: React.Dispatch<React.SetStateAction<string | null>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setContas: React.Dispatch<React.SetStateAction<contaModel[]>>;
+  data: any;
 }
 
 export const getContasData = async ({
   setContas,
   setError,
   setLoading,
+  data,
 }: getDataParams) => {
   setError(null);
   setLoading(true);
   const response = await httpClient({
     endPoint: CONTAS_ENDPOINT,
     baseURL: 'http://10.0.2.2:8082',
+    data,
+    method: 'POST',
   });
 
   if (response.statusCode !== 200) {

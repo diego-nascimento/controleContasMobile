@@ -11,7 +11,16 @@ import * as SC from './style';
 
 export const Home: React.FC = () => {
   const theme = useTheme();
-  const {contasShowing, total, error, loading} = useHomeHooks();
+  const {
+    total,
+    error,
+    loading,
+    afterSelectedDate,
+    setAfterSelectedDate,
+    contas,
+    setBeforeSelectedDate,
+    beforeSelectedDate,
+  } = useHomeHooks();
 
   return (
     <SC.Wrapper>
@@ -24,8 +33,14 @@ export const Home: React.FC = () => {
         <LoadingScreen />
       ) : (
         <SC.Container>
-          <TotalTop total={total} />
-          <ListContas contas={contasShowing} />
+          <TotalTop
+            total={total}
+            afterSelectedDate={afterSelectedDate}
+            setafterSelectedDate={setAfterSelectedDate}
+            setBeforeSelectedDate={setBeforeSelectedDate}
+            beforeSelectedDate={beforeSelectedDate}
+          />
+          <ListContas contas={contas} />
         </SC.Container>
       )}
     </SC.Wrapper>

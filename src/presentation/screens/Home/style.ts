@@ -5,7 +5,5 @@ export const Wrapper = styled.SafeAreaView`
 `;
 
 export const Container = styled.View`
-  ${({theme}) => css`
-    padding: ${theme.spacings.xSmall};
-  `}
+  ${({theme}) => css``}
 `;
