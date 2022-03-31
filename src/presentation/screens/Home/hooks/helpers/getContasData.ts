@@ -1,23 +1,23 @@
 import React from 'react';
-import {contaModel} from '../../../../../models/conta';
+import {movimentationModel} from '../../../../../models/movimentation';
 import {httpClient} from '../../../../../shared/http';
 import {CONTAS_ENDPOINT} from '../../constants';
 
 interface getDataParams {
   setError: React.Dispatch<React.SetStateAction<string | null>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setContas: React.Dispatch<React.SetStateAction<contaModel[]>>;
+  setMovimentations: React.Dispatch<React.SetStateAction<movimentationModel[]>>;
   setTotal: React.Dispatch<React.SetStateAction<number>>;
   data: any;
 }
 
-type getContasTypes = {
-  contas: contaModel[];
+type getMovimentationsTypes = {
+  movimentations: movimentationModel[];
   soma: string;
 };
 
-export const getContasData = async ({
-  setContas,
+export const getMovimentationsData = async ({
+  setMovimentations,
   setError,
   setLoading,
   data,
@@ -25,7 +25,7 @@ export const getContasData = async ({
 }: getDataParams) => {
   setError(null);
   setLoading(true);
-  const response = await httpClient<getContasTypes | any>({
+  const response = await httpClient<getMovimentationsTypes | any>({
     endPoint: CONTAS_ENDPOINT,
     baseURL: 'http://10.0.2.2:8082',
     data,
@@ -36,7 +36,7 @@ export const getContasData = async ({
     setError(response.data);
   } else {
     setTotal(parseFloat(response.data.soma));
-    setContas(response.data.contas);
+    setMovimentations(response.data.movimentations);
   }
   setLoading(false);
 };

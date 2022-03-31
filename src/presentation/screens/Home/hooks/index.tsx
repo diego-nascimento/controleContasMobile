@@ -1,7 +1,7 @@
 import React, {ReactNode, useCallback, useEffect} from 'react';
-import {contaModel} from '../../../../models/conta';
+import {movimentationModel} from '../../../../models/movimentation';
 
-import {getContasData} from './helpers/getContasData';
+import {getMovimentationsData} from './helpers/getContasData';
 import startOfMonth from 'date-fns/startOfMonth';
 import endOfMonth from 'date-fns/endOfMonth';
 
@@ -11,7 +11,7 @@ interface createContextTypes {
   total: number;
   setAfterSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
   afterSelectedDate: Date;
-  contas: contaModel[];
+  movimentations: movimentationModel[];
   setBeforeSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
   beforeSelectedDate: Date;
 }
@@ -20,10 +20,13 @@ export const HomeContext = React.createContext({} as createContextTypes);
 
 type HomeProviderProps = {
   children: ReactNode;
+  status: 'entry' | 'exit' | undefined;
 };
 
-const HomeProvider: React.FC<HomeProviderProps> = ({children}) => {
-  const [contas, setContas] = React.useState<contaModel[]>([]);
+const HomeProvider: React.FC<HomeProviderProps> = ({children, status}) => {
+  const [movimentations, setMovimentations] = React.useState<
+    movimentationModel[]
+  >([]);
   const [total, setTotal] = React.useState<number>(0);
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -35,17 +38,18 @@ const HomeProvider: React.FC<HomeProviderProps> = ({children}) => {
   );
 
   const handleContas = useCallback(async () => {
-    getContasData({
-      setContas,
+    getMovimentationsData({
+      setMovimentations,
       setTotal,
       setError,
       setLoading,
       data: {
         after: afterSelectedDate,
         before: beforeSelectedDate,
+        status,
       },
     });
-  }, [afterSelectedDate, beforeSelectedDate]);
+  }, [afterSelectedDate, beforeSelectedDate, status]);
 
   useEffect(() => {
     handleContas();
@@ -59,7 +63,7 @@ const HomeProvider: React.FC<HomeProviderProps> = ({children}) => {
         total,
         setAfterSelectedDate,
         afterSelectedDate,
-        contas,
+        movimentations,
         setBeforeSelectedDate,
         beforeSelectedDate,
       }}>

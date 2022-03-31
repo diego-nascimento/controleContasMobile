@@ -1,5 +1,3 @@
-import styled, {css} from 'styled-components/native';
+import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  ${({theme}) => css``}
-`;
+export const Container = styled.View``;

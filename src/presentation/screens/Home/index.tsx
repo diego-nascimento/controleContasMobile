@@ -9,11 +9,15 @@ import {ShowMessageError} from './components/showMessageError';
 import {HomeProvider} from './hooks';
 import * as SC from './style';
 
-export const Home: React.FC = () => {
+export interface HomeParams {
+  status: 'entry' | 'exit' | undefined;
+}
+
+export const Home: React.FC<HomeParams> = ({status}: HomeParams) => {
   const theme = useTheme();
 
   return (
-    <HomeProvider>
+    <HomeProvider status={status}>
       <SC.Wrapper>
         <StatusBar
           backgroundColor={theme.pallete.primary.color2}

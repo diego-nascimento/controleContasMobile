@@ -1,10 +1,12 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {Home} from '../../screens/Home';
-import {SplashScreen} from '../../screens/SplashScreen';
 
-const Stack = createNativeStackNavigator();
+import {SplashScreen} from '../../screens/SplashScreen';
+import {InfoNavigator} from '../InfoNavigator';
+import {HomeNavigatorParams} from '../../NavigatorsProps';
+
+const Stack = createNativeStackNavigator<HomeNavigatorParams>();
 
 export const HomeNavigator = () => {
   return (
@@ -16,8 +18,8 @@ export const HomeNavigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Home"
-          component={Home}
+          name="Info"
+          component={InfoNavigator}
           options={{
             headerShown: false,
           }}

@@ -1,18 +1,18 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 
-import {Conta} from '../Conta';
+import {Movimentation} from '../Movimentation';
 import * as SC from './style';
 import {useHome} from '../../hooks';
 
-export const ListContas: React.FC = () => {
-  const {contas} = useHome();
+export const ListMovimentations: React.FC = () => {
+  const {movimentations} = useHome();
   return (
     <SC.Container>
       <FlatList
-        data={contas}
+        data={movimentations}
         keyExtractor={conta => conta.id.toString()}
-        renderItem={Conta}
+        renderItem={Movimentation}
       />
     </SC.Container>
   );

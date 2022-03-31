@@ -1,27 +1,26 @@
 import React from 'react';
-import NumberFormat from 'react-number-format';
+
 import * as SC from './style';
 
-import {HeaderTopTotal} from '../Header';
-import {TimePickers} from '../TimePickers';
-import {FooterTopTotal} from '../Footer';
-import {predefinedParams} from '../../helpers/index';
+import {SelectMonths} from '../SelectMonths';
+
 import {useHome} from '../../hooks/index';
+import {Card} from '../Card';
 
 export const TotalTop: React.FC = () => {
   const [showAfter, setShowAfter] = React.useState<boolean>(false);
   const [showBefore, setShowBefore] = React.useState<boolean>(false);
-  const {
-    afterSelectedDate,
-    beforeSelectedDate,
-    setAfterSelectedDate,
-    setBeforeSelectedDate,
-    total,
-  } = useHome();
+  const {afterSelectedDate, beforeSelectedDate} = useHome();
 
   return (
-    <SC.TotalContainer>
-      <HeaderTopTotal
+    <SC.Wrapper>
+      <Card
+        showAfter={showAfter}
+        showBefore={showBefore}
+        setShowAfter={setShowAfter}
+        setShowBefore={setShowBefore}
+      />
+      <SelectMonths
         params={[
           {
             selectedDate: afterSelectedDate,
@@ -33,38 +32,6 @@ export const TotalTop: React.FC = () => {
           },
         ]}
       />
-
-      <TimePickers
-        params={[
-          {
-            selectedDate: afterSelectedDate,
-            setSelectedDate: setAfterSelectedDate,
-            show: showAfter,
-            setShow: setShowAfter,
-          },
-          {
-            selectedDate: beforeSelectedDate,
-            setSelectedDate: setBeforeSelectedDate,
-            show: showBefore,
-            setShow: setShowBefore,
-          },
-        ]}
-      />
-
-      <NumberFormat
-        value={total}
-        displayType={'text'}
-        thousandSeparator={true}
-        prefix={'R$'}
-        renderText={formattedValue => (
-          <SC.TotalValue>{formattedValue}</SC.TotalValue>
-        )}
-      />
-      <FooterTopTotal
-        setBeforeSelectedDate={setBeforeSelectedDate}
-        setafterSelectedDate={setAfterSelectedDate}
-        params={predefinedParams}
-      />
-    </SC.TotalContainer>
+    </SC.Wrapper>
   );
 };

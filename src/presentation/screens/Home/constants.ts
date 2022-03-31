@@ -1,1 +1,1 @@
-export const CONTAS_ENDPOINT = '/contas';
+export const CONTAS_ENDPOINT = '/movimentations';
