@@ -20,14 +20,13 @@ export const ButtonSelectMonthText = styled.Text`
 
 export const SelectMonthContainer = styled.View`
   flex-direction: row;
-  justify-content: center; ;
+  justify-content: space-around;
 `;
 
 export const ButtonSelectMonth = styled.TouchableOpacity`
   ${({theme}) => css`
     border-radius: ${theme.borderRadius};
     justify-content: center;
-    flex: 1;
     align-items: center;
     margin: ${theme.spacings.none} ${theme.spacings.none};
   `};
