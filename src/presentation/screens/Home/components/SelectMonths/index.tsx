@@ -5,6 +5,7 @@ import {formatDate} from '../Movimentation/helper/formatDate';
 type paramsTypes = {
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
   selectedDate: Date;
+  icon: string;
 };
 
 interface SelectMonthProps {
@@ -22,6 +23,7 @@ export const SelectMonths: React.FC<SelectMonthProps> = ({params}) => {
               onPressIn={() => {
                 param.setShow(true);
               }}>
+              <SC.IconsStyled name={param.icon} />
               <SC.ButtonSelectMonthText>
                 {formatDate(param.selectedDate)}
               </SC.ButtonSelectMonthText>

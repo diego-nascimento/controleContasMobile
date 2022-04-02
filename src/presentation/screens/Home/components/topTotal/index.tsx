@@ -23,12 +23,14 @@ export const TotalTop: React.FC = () => {
       <SelectMonths
         params={[
           {
+            icon: 'keyboard-arrow-down',
             selectedDate: afterSelectedDate,
             setShow: setShowAfter,
           },
           {
             selectedDate: beforeSelectedDate,
             setShow: setShowBefore,
+            icon: 'keyboard-arrow-up',
           },
         ]}
       />

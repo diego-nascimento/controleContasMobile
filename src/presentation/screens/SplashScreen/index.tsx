@@ -52,7 +52,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({navigation}) => {
 
   React.useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Info');
+      navigation.replace('App');
     }, 4000);
   }, [navigation]);
   return (

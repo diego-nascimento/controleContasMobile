@@ -3,8 +3,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 
 import {SplashScreen} from '../../screens/SplashScreen';
-import {InfoNavigator} from '../InfoNavigator';
+
 import {HomeNavigatorParams} from '../../NavigatorsProps';
+import {AppNavigator} from '../AppNavigator';
 
 const Stack = createNativeStackNavigator<HomeNavigatorParams>();
 
@@ -18,8 +19,8 @@ export const HomeNavigator = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Info"
-          component={InfoNavigator}
+          name="App"
+          component={AppNavigator}
           options={{
             headerShown: false,
           }}
