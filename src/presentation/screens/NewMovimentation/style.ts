@@ -5,3 +5,8 @@ export const Container = styled.View`
     padding: ${theme.spacings.xxxSmall} ${theme.spacings.small};
   `}
 `;
+
+export const DateUserContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+`;
