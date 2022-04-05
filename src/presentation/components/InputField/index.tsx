@@ -38,7 +38,7 @@ export function InputText({
         )}
         name={name}
       />
-      {errors[name] && <SC.Error>{errors[name]}</SC.Error>}
+      {errors[name] && <SC.Error>{errors[name].message}</SC.Error>}
     </SC.Wrapper>
   );
 }

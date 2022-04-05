@@ -6,6 +6,7 @@ export const Container = styled.TouchableHighlight`
     border-color: ${theme.pallete.secondary.color3};
     padding: ${theme.spacings.xxxSmall};
     align-items: center;
+    border-radius: ${theme.borderRadius};
   `}
 `;
 

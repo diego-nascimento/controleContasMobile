@@ -10,7 +10,7 @@ import {Card} from '../Card';
 export const TotalTop: React.FC = () => {
   const [showAfter, setShowAfter] = React.useState<boolean>(false);
   const [showBefore, setShowBefore] = React.useState<boolean>(false);
-  const {afterSelectedDate, beforeSelectedDate} = useHome();
+  const {afterSelectedDate, beforeSelectedDate, handleContas} = useHome();
 
   return (
     <SC.Wrapper>
@@ -19,6 +19,7 @@ export const TotalTop: React.FC = () => {
         showBefore={showBefore}
         setShowAfter={setShowAfter}
         setShowBefore={setShowBefore}
+        handleContas={handleContas}
       />
       <SelectMonths
         params={[

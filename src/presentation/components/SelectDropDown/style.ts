@@ -7,6 +7,7 @@ export const SelectStyled = styled(SelectDropdown).attrs(({theme}) => ({
     borderWidth: 1,
     borderColor: theme.pallete.secondary.color3,
     backgroundColor: theme.pallete.primary.color1,
+    borderRadius: 4,
   },
   buttonTextStyle: {
     fontSize: 14,

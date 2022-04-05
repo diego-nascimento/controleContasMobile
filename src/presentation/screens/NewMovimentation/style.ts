@@ -1,12 +1,12 @@
 import styled, {css} from 'styled-components/native';
 
-export const Container = styled.View`
+export const Wrapper = styled.View`
   ${({theme}) => css`
-    padding: ${theme.spacings.xxxSmall} ${theme.spacings.small};
+    padding: ${theme.spacings.xxxSmall} ${theme.spacings.small}
+      ${theme.spacings.large};
+    justify-content: space-between;
+    flex: 1;
   `}
 `;
 
-export const DateUserContainer = styled.View`
-  flex-direction: row;
-  justify-content: space-around;
-`;
+export const Formulario = styled.View``;

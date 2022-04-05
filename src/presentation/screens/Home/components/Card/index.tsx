@@ -3,6 +3,7 @@ import NumberFormat from 'react-number-format';
 import {predefinedParams} from '../../helpers';
 import {useHome} from '../../hooks';
 import {FooterTopTotal} from '../Footer';
+import {RefreshIcon} from '../RefreshIcon';
 import {TimePickers} from '../TimePickers';
 import * as SC from './style';
 
@@ -11,6 +12,7 @@ interface CardProps {
   showBefore: boolean;
   setShowAfter: React.Dispatch<React.SetStateAction<boolean>>;
   setShowBefore: React.Dispatch<React.SetStateAction<boolean>>;
+  handleContas: () => void;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -18,6 +20,7 @@ export const Card: React.FC<CardProps> = ({
   setShowAfter,
   setShowBefore,
   showBefore,
+  handleContas,
 }) => {
   const {
     afterSelectedDate,
@@ -28,6 +31,7 @@ export const Card: React.FC<CardProps> = ({
   } = useHome();
   return (
     <SC.TotalContainer>
+      <RefreshIcon handlePress={handleContas} />
       <TimePickers
         params={[
           {

@@ -14,6 +14,7 @@ interface createContextTypes {
   movimentations: movimentationModel[];
   setBeforeSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
   beforeSelectedDate: Date;
+  handleContas: () => Promise<void>;
 }
 
 export const HomeContext = React.createContext({} as createContextTypes);
@@ -66,6 +67,7 @@ const HomeProvider: React.FC<HomeProviderProps> = ({children, status}) => {
         movimentations,
         setBeforeSelectedDate,
         beforeSelectedDate,
+        handleContas,
       }}>
       {children}
     </HomeContext.Provider>

@@ -1,31 +1,25 @@
 import React from 'react';
-import {SelectDropDownComponent} from '../../components/SelectDropDown';
+import {ButtonInsert} from './components/ButtonInsert';
 import {ContaImagePicker} from './components/ContaImagePicker';
+import {ContainerPickers} from './components/ContainerPickers';
 
-import {DateTimePicker} from './components/DateTimePicker';
 import {FormInputs} from './components/FormInputs';
+import {ModalStatusMovimentation} from './components/ModalStatusMovimentation';
 import {NewMovimentationProvider} from './hooks';
-
 import * as SC from './style';
 
 export const NewMovimentation = () => {
-  const data = [{name: 'Poirio'}, {name: 'Gaelico'}, {name: 'Oria'}];
-  const [value, setValue] = React.useState<any>(null);
   return (
     <NewMovimentationProvider>
-      <SC.Container>
-        <FormInputs />
-        <SC.DateUserContainer>
-          <DateTimePicker />
-          <SelectDropDownComponent
-            data={data}
-            fieldToShow="name"
-            setSelected={setValue}
-          />
-        </SC.DateUserContainer>
-
-        <ContaImagePicker />
-      </SC.Container>
+      <ModalStatusMovimentation />
+      <SC.Wrapper>
+        <SC.Formulario>
+          <FormInputs />
+          <ContainerPickers />
+          <ContaImagePicker />
+        </SC.Formulario>
+        <ButtonInsert />
+      </SC.Wrapper>
     </NewMovimentationProvider>
   );
 };
